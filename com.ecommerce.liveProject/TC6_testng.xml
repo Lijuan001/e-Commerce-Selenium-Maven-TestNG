@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TC6_Suite">
+  <test thread-count="5" name="TC6_Test">
+    <classes>
+     <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail"/> 
+      <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId"/>
+    </classes>
+  </test> <!-- TC6_Test -->
+</suite> <!-- TC6_Suite -->
+

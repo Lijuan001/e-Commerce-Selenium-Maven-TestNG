@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="Base.CustomListener"/>
+  </listeners>
+  <test thread-count="5" name="TestTC12(failed)">
+    <classes>
+      <class name="Test.TC1_VerifyItemInMobileListPageCanBeSortedByName">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="VerifyItemInMobileListPageCanBeSortedByName"/>
+        </methods>
+      </class> <!-- Test.TC1_VerifyItemInMobileListPageCanBeSortedByName -->
+    </classes>
+  </test> <!-- TestTC12(failed) -->
+</suite> <!-- Failed suite [Suite] -->
