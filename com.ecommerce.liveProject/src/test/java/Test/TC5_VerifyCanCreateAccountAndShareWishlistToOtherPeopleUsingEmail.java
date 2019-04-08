@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import Base.BaseTest;
@@ -38,13 +39,17 @@ public class TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail e
 	@DataProvider(name="createNewAccountData")
 	public Object[][] newAccountData(){
 		return new Object[][] {
-			{"jane","shen","shenlijuan004@gmail.com","Today@123","Today@123","shenlijuan001@gmail.com","this TV is very good."}
+			//{"jane","shen","shenlijuan004@gmail.com","Today@123","Today@123","shenlijuan001@gmail.com","this TV is very good."}
+			{"jane","shen","Today@123","shenlijuan001@gmail.com","this TV is very good."}
 		};
 	}
 	
+	
 	@Test(dataProvider="createNewAccountData")
 	public void VerifyCostOfProductInListPageAndDetailsPageEqual(String firstName,
-			String lastName,String emailAddress,String password,String confirmPassword,String emailAddressShareWishlist, String messageShareWishlist) throws InterruptedException {
+			String lastName,String password,String confirmPassword,String emailAddressShareWishlist, String messageShareWishlist) throws InterruptedException {
+		//get random sign up email address
+		String emailAddress=generateEmailAddress();
 		
 		index=new Index();
 		

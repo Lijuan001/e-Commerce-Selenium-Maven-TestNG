@@ -20,11 +20,18 @@ public class CustomerHomePage  extends BaseTest{
 	@FindBy(xpath="//div[@class='block-content']/ul/li[8]/a")
 	WebElement myWishlist;
 	
+	//sidebar menu
+		@FindBy(xpath="//div[@class='block-content']/ul/li[4]/a")
+		WebElement myOrders;
+	
 	@FindBy(xpath="//a[@title='LG LCD']/../div/div[3]/ul/li/a")
 	WebElement lgLCDAddToWishlist;
 	
 	@FindBy(xpath="//a[@title='Samsung LCD']/../div/div[3]/ul/li/a")
 	WebElement sumsungLCDAddToWishlist;
+	
+	
+	
 	
 	public CustomerHomePage() {
 		PageFactory.initElements(driver, this);
@@ -47,9 +54,11 @@ public class CustomerHomePage  extends BaseTest{
 	
 	//click side bar menu
 	public void clickSideBar(String sidebarMenu) {
-		if(sidebarMenu.equalsIgnoreCase("my wishlist")) {
+		if(sidebarMenu.equalsIgnoreCase("my wishlist")) {//click 'MY WISHLIST'
 			System.out.println("should click my wishlist: "+myWishlist.getText());
 			myWishlist.click();
+		}else if(sidebarMenu.equalsIgnoreCase("my orders")) {//click 'MY ORDERS'
+			myOrders.click();
 		}
 	}
 	

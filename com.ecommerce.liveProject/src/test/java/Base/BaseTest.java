@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -13,6 +14,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
 import Util.Constants;
 
@@ -22,7 +24,8 @@ public class BaseTest {
 	
 	public BaseTest() {
 		
-		prop=new Properties();
+		prop=new Properties();//create an empty property list without defautl vlaue
+		System.out.println("prop is :"+prop);
 		try {
 			FileInputStream fil=new FileInputStream(System.getProperty("user.dir")+
 					"\\src\\test\\java\\config\\config.properties");
@@ -83,6 +86,8 @@ public class BaseTest {
 		
 	}
 	
+	//get screenshot
+	
 	public void getScreenShot() {
 		File srcFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String currentTime=getCurrentDateAndTime();
@@ -97,5 +102,39 @@ public class BaseTest {
 		}
 	}
 	
+	
+	//generate a random emailAddress
+	
+	public String generateEmailAddress() {
+		String string="abcdefghijklmnopqrstuvwxyz1234567890";
+		StringBuilder chars=new StringBuilder();
+		
+		Random rnd=new Random();
+		
+		while(chars.length()<10) {
+			int index=(int) (rnd.nextFloat() * string.length());
+			System.out.println("next float is :"+rnd.nextFloat());
+						
+			chars.append(string.charAt(index));
+			System.out.println("char is :"+string.charAt(index));
+
+		}
+		
+		chars.append("@email.com");
+		String email=chars.toString();
+		System.out.println("email is:"+email);
+		return email;
 	}
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TC6_Suite]">
+  <test thread-count="5" name="TC6_Test(failed)">
+    <parameter name="emailAddress" value="shenlijuan003@gmail.com"/>
+    <parameter name="password" value="Today@123"/>
     <classes>
-      <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId">
+      <class name="Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF">
         <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="VerifyUserCanPurchaseProductUsingRegisteredEmailId" invocation-numbers="0"/>
+          <include name="teardown"/>
+          <include name="setup"/>
+          <include name="verifyBeAbleToSavePreviousPlacedOrderAsPDF" invocation-numbers="0"/>
         </methods>
-      </class> <!-- Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId -->
+      </class> <!-- Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- TC6_Test(failed) -->
+</suite> <!-- Failed suite [TC6_Suite] -->

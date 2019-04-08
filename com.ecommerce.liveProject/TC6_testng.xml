@@ -2,9 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TC6_Suite">
   <test thread-count="5" name="TC6_Test">
+  <parameter name="emailAddress" value="shenlijuan003@gmail.com"></parameter>
+  <parameter name="password" value="Today@123"></parameter>
     <classes>
-     <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail"/> 
-      <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId"/>
+<!--      <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail"/>  -->
+<!--       <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId"/> -->
+      <class name="Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF"/>
     </classes>
   </test> <!-- TC6_Test -->
 </suite> <!-- TC6_Suite -->

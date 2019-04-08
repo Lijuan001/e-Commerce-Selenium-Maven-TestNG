@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Base.BaseTest;
@@ -31,6 +32,30 @@ public class ShoppingCart extends BaseTest{
 	@FindBy(xpath="//*[@class='checkout-types bottom']/li/button")
 	WebElement proceedToCheckOutBottom;
 	
+	@FindBy(css="select[name='country_id']")
+	WebElement countryDropDown;
+	
+	@FindBy(css="select[name='region_id']")
+	WebElement stateDropDown;
+	
+	@FindBy(css="input[name='estimate_postcode']")
+	WebElement zipcodeEle;
+	
+	@FindBy(css="button[title='Estimate']")
+	WebElement estimate;
+	
+	@FindBy(xpath="//form[@id='co-shipping-method-form']/dl/dt")
+	WebElement shippingMehod;
+	
+	@FindBy(css="input[name='estimate_method']+label")
+	WebElement shippingPrice;
+	
+	@FindBy(css="input[name='estimate_method']")
+	WebElement selectShippingCostRadioButton;
+	
+	@FindBy(css="button[title='Update Total']")
+	WebElement updateTotal;
+	
 	public ShoppingCart() {
 		PageFactory.initElements(driver, this);
 	}
@@ -38,6 +63,22 @@ public class ShoppingCart extends BaseTest{
 	public String getTitle() {
 		return driver.getTitle();
 	}
+	
+	//get shipping method, this should be 'Flat Rate'
+	public String getText(String elementName) throws Exception {
+		if(elementName.equalsIgnoreCase("flat rate")) {
+			return shippingMehod.getText();//get shipping method, this should be 'Flat Rate'
+		}else if(elementName.equalsIgnoreCase("flat rate price")) 
+		{//get shipping price
+			return shippingPrice.getText();
+		}else {
+			throw new Exception("please enter correct element name");
+		}
+	}
+	
+	
+	
+	
 	
 	//Change 'QTY' value to 1000 and click 'UPDATE' button
 	public void changeQTYAndUpdate() {
@@ -68,6 +109,12 @@ public class ShoppingCart extends BaseTest{
 			proceedToCheckOutTop.click();//click on 'PROCEED TO CHECKOUT' link on the top
 		}else if(linkName.equalsIgnoreCase("proceed to checkout bottom")) {
 			proceedToCheckOutBottom.click();//click on 'PROCEED TO CHECKOUT' link on the bottom
+		}else if(linkName.equalsIgnoreCase("estimate")) {
+			estimate.click();//click 'ESTIMATE' button
+		}else if(linkName.equalsIgnoreCase("select shipping cost radio button")) {
+			selectShippingCostRadioButton.click();//select shipping cost radio button
+		}else if(linkName.equalsIgnoreCase("update total")) {
+			updateTotal.click();
 		}
 		
 	}
@@ -75,5 +122,17 @@ public class ShoppingCart extends BaseTest{
 	//Verify cart is empty
 	public String getCartIsEmptyMessage() {
 		return emptyCartMessage.getText();
+	}
+	
+	//Enter general shipping country,state/province and zip for the shipping 
+	//cost estimate
+	public void enterInformationForExtimateShippingCost(String country,String state,String zipcode) {
+		Select select=new Select(countryDropDown);
+		select.selectByVisibleText(country);
+		
+		Select select2=new Select(stateDropDown);
+		select2.selectByVisibleText(country);
+		
+		zipcodeEle.sendKeys(zipcode);
 	}
 }
