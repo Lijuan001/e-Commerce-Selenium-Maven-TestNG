@@ -140,7 +140,7 @@ public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends Bas
 		checkoutPage.fillBillingInformation(country, state, zip, address, city, telephone);
 		
 		//12.In Billing Address, click 'Ship to this address' AND click 'CONTINUE'button
-		checkoutPage.clickShippingToThisAddress();
+		checkoutPage.clickShippingAddressMethod("ship to this address");
 		checkoutPage.clickContinueButton("Billing Address Continue");
 		
 		

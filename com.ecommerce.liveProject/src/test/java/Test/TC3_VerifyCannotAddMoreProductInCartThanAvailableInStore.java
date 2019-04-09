@@ -57,7 +57,7 @@ index=new Index();
 		
 		//4.Change 'QTY' value to 1000 and click 'UPDATE' button
 		shoppingCart=new ShoppingCart();
-		shoppingCart.changeQTYAndUpdate();
+		shoppingCart.changeQTYAndUpdate(1000);
 		
 		//5.Verify the error message
 		Assert.assertTrue(shoppingCart.getErrorMessageQTY().contains("The maximum quantity allowed for purchase is 500"));

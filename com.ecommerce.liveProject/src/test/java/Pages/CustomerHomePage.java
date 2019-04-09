@@ -30,7 +30,8 @@ public class CustomerHomePage  extends BaseTest{
 	@FindBy(xpath="//a[@title='Samsung LCD']/../div/div[3]/ul/li/a")
 	WebElement sumsungLCDAddToWishlist;
 	
-	
+	@FindBy(xpath="//table[@id='my-orders-table']/tbody/tr[1]/td[6]/span/a[2]")
+	WebElement reorder;
 	
 	
 	public CustomerHomePage() {
@@ -68,5 +69,10 @@ public class CustomerHomePage  extends BaseTest{
 			lgLCDAddToWishlist.click();
 		}else if(productName.equalsIgnoreCase("SAMSUNG LCD"))
 			sumsungLCDAddToWishlist.click();	
+	}
+	
+	//click 'REORDER' link
+	public void clickReorder() {
+		reorder.click();
 	}
 }

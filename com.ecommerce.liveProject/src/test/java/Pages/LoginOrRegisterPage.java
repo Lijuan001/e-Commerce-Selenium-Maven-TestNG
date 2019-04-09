@@ -41,7 +41,7 @@ public class LoginOrRegisterPage extends BaseTest{
 		loginPassword.clear();
 		loginPassword.sendKeys(password);
 		
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		loginButton.click();
 	}
 }

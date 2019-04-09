@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,12 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Base.BaseTest;
 
 public class ShoppingCart extends BaseTest{
-	@FindBy(xpath="//input[@title='Qty']")
-	WebElement qty;
-	
-	@FindBy(css="input[title='Qty']+button")
-	WebElement update;
-	
+//	@FindBy(xpath="//table[@id='shopping-cart-table']/tbody/tr[1]/td[4]/input[@title='Qty']")
+//	WebElement qty;
+//	
+//	@FindBy(xpath="//table[@id='shopping-cart-table']/tbody/tr[1]/td[4]/input[@title='Qty']/following-sibling::button")
+//	WebElement update;
+//	
 	
 	@FindBy(css="p[class='item-msg error']")
 	WebElement errorMessageQTY;
@@ -56,6 +57,9 @@ public class ShoppingCart extends BaseTest{
 	@FindBy(css="button[title='Update Total']")
 	WebElement updateTotal;
 	
+	@FindBy(xpath="//table[@id='shopping-cart-totals-table']/tfoot/tr[1]/td[2]/strong/span")
+	WebElement grandTotal;
+	
 	public ShoppingCart() {
 		PageFactory.initElements(driver, this);
 	}
@@ -78,12 +82,23 @@ public class ShoppingCart extends BaseTest{
 	
 	
 	
-	
+	//to dynamically process the shopping cart table according to rowNo and colNo
+		public WebElement getTableCellElement(int tr,int td) {
+			By updateQty=By.xpath("//table[@id='shopping-cart-table']/tbody/tr["+tr+"]/td["+td+"]/input[@title='Qty']");
+			//By updataQtyButton=By.xpath("//table[@id='shopping-cart-table']/tbody/tr[tr]/td[4]/input[@title='Qty']/following-sibling::button");		
+			WebElement qtyInputField=driver.findElement(updateQty);
+			//WebElement updateQTYField=driver.findElement(updataQtyButton);
+			return qtyInputField;
+		}
 	
 	//Change 'QTY' value to 1000 and click 'UPDATE' button
-	public void changeQTYAndUpdate() {
+	public void changeQTYAndUpdate(int quality) {
+		WebElement qty=getTableCellElement(1,4);//to change first row's qty value
 		qty.clear();
-		qty.sendKeys(String.valueOf(1000));
+		qty.sendKeys(String.valueOf(quality));
+		
+		WebElement update=getTableCellElement(1,4).findElement(By.xpath("./following-sibling::button"));
+		System.out.println("get text of update button:"+update.getText());
 		
 		WebDriverWait wait=new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.visibilityOf(update));
@@ -134,5 +149,10 @@ public class ShoppingCart extends BaseTest{
 		select2.selectByVisibleText(country);
 		
 		zipcodeEle.sendKeys(zipcode);
+	}
+	
+	//get grand total
+	public String getGrandTotal() {
+		return grandTotal.getText();
 	}
 }
