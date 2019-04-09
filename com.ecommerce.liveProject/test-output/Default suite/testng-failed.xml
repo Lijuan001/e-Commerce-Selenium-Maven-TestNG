@@ -3,13 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF">
+      <class name="Pages.CheckoutPage">
         <methods>
-          <include name="teardown"/>
-          <include name="setup"/>
-          <include name="verifyBeAbleToSavePreviousPlacedOrderAsPDF"/>
+          <include name="checkShippingCostAddedToGrandTotal"/>
         </methods>
-      </class> <!-- Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF -->
+      </class> <!-- Pages.CheckoutPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

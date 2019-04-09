@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="TC6_Suite" duration-ms="25028" started-at="2019-04-08T20:29:45Z" finished-at="2019-04-08T20:30:10Z">
+  <suite name="TC_Suite" duration-ms="37420" started-at="2019-04-09T19:50:52Z" finished-at="2019-04-09T19:51:29Z">
     <groups>
     </groups>
-    <test name="TC6_Test" duration-ms="25028" started-at="2019-04-08T20:29:45Z" finished-at="2019-04-08T20:30:10Z">
-      <class name="Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF">
-        <test-method status="PASS" signature="setup()[pri:0, instance:Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF@25af5db5]" name="setup" is-config="true" duration-ms="4616" started-at="2019-04-08T20:29:45Z" finished-at="2019-04-08T20:29:50Z">
+    <test name="TC_Test" duration-ms="37420" started-at="2019-04-09T19:50:52Z" finished-at="2019-04-09T19:51:29Z">
+      <class name="Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct">
+        <test-method status="PASS" signature="setup()[pri:0, instance:Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct@25af5db5]" name="setup" is-config="true" duration-ms="5050" started-at="2019-04-09T19:50:52Z" finished-at="2019-04-09T19:50:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="verifyBeAbleToSavePreviousPlacedOrderAsPDF(java.lang.String, java.lang.String)[pri:0, instance:Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF@25af5db5]" name="verifyBeAbleToSavePreviousPlacedOrderAsPDF" duration-ms="19759" started-at="2019-04-08T20:29:50Z" finished-at="2019-04-08T20:30:10Z">
+        <test-method status="PASS" signature="verifyBeAbleToChangeOrReorderPreviouslyAddedProduct(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct@25af5db5]" name="verifyBeAbleToChangeOrReorderPreviouslyAddedProduct" duration-ms="32345" started-at="2019-04-09T19:50:57Z" finished-at="2019-04-09T19:51:29Z">
           <params>
             <param index="0">
               <value>
@@ -23,15 +23,50 @@
                 <![CDATA[Today@123]]>
               </value>
             </param>
+            <param index="2">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[United States]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[New York]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[60660]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[DEF]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[New York]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBeAbleToSavePreviousPlacedOrderAsPDF -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF@25af5db5]" name="teardown" is-config="true" duration-ms="632" started-at="2019-04-08T20:30:10Z" finished-at="2019-04-08T20:30:10Z">
+        </test-method> <!-- verifyBeAbleToChangeOrReorderPreviouslyAddedProduct -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct@25af5db5]" name="teardown" is-config="true" duration-ms="0" started-at="2019-04-09T19:51:29Z" finished-at="2019-04-09T19:51:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF -->
-    </test> <!-- TC6_Test -->
-  </suite> <!-- TC6_Suite -->
+      </class> <!-- Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct -->
+    </test> <!-- TC_Test -->
+  </suite> <!-- TC_Suite -->
 </testng-results>
