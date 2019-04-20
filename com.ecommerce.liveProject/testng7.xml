@@ -14,10 +14,8 @@
   
   
     <classes>
-<!--      <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail"/>  -->
-<!--       <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId"/> -->
-<!--       <class name="Test.TC7_VerifyBeAbleToSavePreviousPlacedOrderAsPDF"/> -->
-			<class name="Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct"/>
+     <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail"/>  
+
     </classes>
   </test> <!-- TC_Test -->
 </suite> <!-- TC_Suite -->

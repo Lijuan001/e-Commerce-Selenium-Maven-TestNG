@@ -1,3 +1,26 @@
+/***
+ * Verify that you are able to compare to compare two product
+ * 
+ * Test Steps:
+ * 1. Goto http://live.guru99.com/
+ * 2.Click on 'MOBILE' menu
+ * 3.In the list of all mobile, click on 'Add To Compare' for two mobiles
+ * 4.Click on 'COMPARE' button.
+ * 5.Verify the pop-up windwo and check that the products are reflected in it.
+ * 6.close the popup windows.
+ * 
+ * 
+ * Test Data:
+ * Phone 1-Sony Xperia, Phone 2-IPHONE
+ * 
+ * 
+ * 
+ * Expected outcomes:
+ * 1.A popup window opens with heading as 'COMPARE PRODUCTS' and the selected products are present in it.
+ * 2.popup window is closed
+ */
+
+
 package Test;
 
 import java.util.Set;
@@ -5,6 +28,7 @@ import java.util.Set;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import Base.BaseTest;
@@ -19,7 +43,7 @@ public class TC4_VerifyAbleToCompareTwoProduct  extends BaseTest{
 	public void setUp() {
 		initBrowser();
 		driver.get(prop.getProperty("baseURL"));
-		System.out.println("set up prop is: "+prop);
+		
 	}
 	
 	@AfterMethod
@@ -32,15 +56,18 @@ public class TC4_VerifyAbleToCompareTwoProduct  extends BaseTest{
 	SonyXperiaDetailPage sonyXperiaDetail;
 	ShoppingCart shoppingCart;
 	
+	@Parameters({"mobile1","mobile2"})
 	@Test
-	public void VerifyCostOfProductInListPageAndDetailsPageEqual() {
+	public void VerifyCostOfProductInListPageAndDetailsPageEqual(String mobile1,String mobile2) throws InterruptedException {
 		
-index=new Index();
+		index=new Index();
 		
 		//verify heading of the page
 		String expectedHeading="THIS IS DEMO SITE";
 		System.out.println("index page heading is: "+index.getHeading());
 		Assert.assertTrue(index.getHeading().contains(expectedHeading));
+		
+		Thread.sleep(2000);
 		
 		//2.Click On 'MOBILE' menu
 		index.goToMobilePage();
@@ -58,24 +85,24 @@ index=new Index();
 		String mainWindow=driver.getWindowHandle();
 		System.out.println("main window is : "+mainWindow);
 		
-		//get get mainMobile name1
-		String sonyXperiaName=mobilepage.getSonyXperiaName();
-		System.out.println("mainMobile1 = "+sonyXperiaName);// text captured - upperCase "SONY XPERIA"
+		//get mainMobile name1
+		String phone1=mobilepage.getPhoneName(mobile1);
+		System.out.println("mainMobile1 = "+phone1);// text captured - upperCase "SONY XPERIA"
 		
 		//get mainMobile name2
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String iphoneName=mobilepage.getIphoneName();
-		System.out.println("mainMobile2 = "+iphoneName);// text captured - upperCase "IPHONE"
+		String phone2=mobilepage.getPhoneName(mobile2);
+		System.out.println("mainMobile2 = "+phone2);// text captured - upperCase "IPHONE"
 		
+		//4.Click 'Add to Compare' for phone1 and phone2 AND Click on 'COMPARE' button
 		mobilepage.compareTwoPhoneXperiaAndIphone();
 		
-		//4.Verify the popup window and check that the products are reflected in it
-		
+		//5.Verify the popup window and check that the products are reflected in it
 		Set<String> windows=driver.getWindowHandles();
 		
 		for (String window : windows) {
@@ -92,12 +119,14 @@ index=new Index();
 		Assert.assertEquals(mobilepage.getHeadingPopup(), "COMPARE PRODUCTS");
 		
 		//to check the 2 mobiles selected are the two in the popup - this is to check the sony xperia 
-		Assert.assertEquals(sonyXperiaName, mobilepage.getProduct1NamePopup());
+		Assert.assertEquals(phone1, mobilepage.getProduct1NamePopup());
 		
 		//to check the 2 mobiles selected are the two in the popup - this is to check iphone 
-		Assert.assertEquals(iphoneName, mobilepage.getProduct2NamePop());
+		Assert.assertEquals(phone2, mobilepage.getProduct2NamePop());
 		
-		//5.close the pop up window
+		Thread.sleep(2000);
+		
+		//6.close the pop up window
 		mobilepage.closeCompareProductsPopup();
 		
 		//switch to main window

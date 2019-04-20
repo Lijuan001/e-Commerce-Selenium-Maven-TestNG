@@ -88,16 +88,24 @@ public class MobilePage extends BaseTest{
 	}
 	
 	//get Sony Xperia name
-	public String getSonyXperiaName() {
-		return sonyXperiaName.getText();
+	public String getPhoneName(String phoneName) {
+		String phone=null;
+		if(phoneName.equalsIgnoreCase("sony xperia")) {
+			phone=sonyXperiaName.getText();
+		}else if(phoneName.equalsIgnoreCase("iphone")) {
+			WebDriverWait wait=new WebDriverWait(driver,10);
+			wait.until(ExpectedConditions.visibilityOf(iphoneName));
+			phone=iphoneName.getText();
+		}
+		return phone;
 	}
 	
-	//get Iphone name
-	public String getIphoneName() {
-		WebDriverWait wait=new WebDriverWait(driver,10);
-		wait.until(ExpectedConditions.visibilityOf(iphoneName));
-		return iphoneName.getText();
-	}
+//	//get Iphone name
+//	public String getIphoneName() {
+//		WebDriverWait wait=new WebDriverWait(driver,10);
+//		wait.until(ExpectedConditions.visibilityOf(iphoneName));
+//		return iphoneName.getText();
+//	}
 	
 	//click on 'ADD TO CART' for Sony Xperia mobile
 	public void addToCartSonyXperia() {

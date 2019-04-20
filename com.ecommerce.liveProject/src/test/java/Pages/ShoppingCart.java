@@ -33,8 +33,8 @@ public class ShoppingCart extends BaseTest{
 	@FindBy(xpath="//*[@class='checkout-types bottom']/li/button")
 	WebElement proceedToCheckOutBottom;
 	
-	@FindBy(css="select[name='country_id']")
-	WebElement countryDropDown;
+	@FindBy(id="country")
+	WebElement  countryDropDown;
 	
 	@FindBy(css="select[name='region_id']")
 	WebElement stateDropDown;
@@ -145,8 +145,9 @@ public class ShoppingCart extends BaseTest{
 		Select select=new Select(countryDropDown);
 		select.selectByVisibleText(country);
 		
+		
 		Select select2=new Select(stateDropDown);
-		select2.selectByVisibleText(country);
+		select2.selectByVisibleText(state);
 		
 		zipcodeEle.sendKeys(zipcode);
 	}

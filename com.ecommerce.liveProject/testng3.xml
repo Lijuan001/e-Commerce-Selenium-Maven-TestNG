@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TC3Suite">
+  <test thread-count="5" name="TC3Test">
+    <classes>
+      <class name="Test.TC3_VerifyCannotAddMoreProductInCartThanAvailableInStore"/>
+    </classes>
+  </test> <!-- TC1Test -->
+</suite> <!-- TC1Suite -->

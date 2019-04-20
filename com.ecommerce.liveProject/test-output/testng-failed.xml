@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [TC_Suite]">
-  <test thread-count="5" name="TC_Test(failed)">
-    <parameter name="zip" value="60660"/>
-    <parameter name="country" value="United States"/>
-    <parameter name="emailAddress" value="shenlijuan003@gmail.com"/>
-    <parameter name="password" value="Today@123"/>
-    <parameter name="address" value="DEF"/>
-    <parameter name="city" value="New York"/>
-    <parameter name="qty" value="10"/>
-    <parameter name="telephone" value="123456"/>
-    <parameter name="state" value="New York"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TC6_Suite]">
+  <test thread-count="5" name="TC6_Test(failed)">
     <classes>
-      <class name="Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct">
+      <class name="Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId">
         <methods>
-          <include name="setup"/>
-          <include name="teardown"/>
-          <include name="verifyBeAbleToChangeOrReorderPreviouslyAddedProduct" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="VerifyUserCanPurchaseProductUsingRegisteredEmailId" invocation-numbers="0"/>
         </methods>
-      </class> <!-- Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct -->
+      </class> <!-- Test.TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId -->
     </classes>
-  </test> <!-- TC_Test(failed) -->
-</suite> <!-- Failed suite [TC_Suite] -->
+  </test> <!-- TC6_Test(failed) -->
+</suite> <!-- Failed suite [TC6_Suite] -->

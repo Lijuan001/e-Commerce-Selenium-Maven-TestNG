@@ -1,17 +1,43 @@
+/***
+ * Verify user is able to purchase product using registered email id
+ * 
+ * Test Steps:
+ * 1.Go to http://live.guru99.com/
+ * 2.Click on my acccount link.
+ * 3.Login in application using previously created credential
+ * 4.Click on My WishList link
+ * 5.In next page,Click 'ADD TO CART' link
+ * 6.Enter general shipping country, state/province and zip for the shipping cost estimate
+ * 7. Click Estimate 
+* 8. Verify Shipping cost generated 
+* 9. Select Shipping Cost, Update Total 
+* 10. Verify shipping cost is added to total 
+* 11. Click "Proceed to Checkout"
+* 12a. Enter Billing Information, and click Continue
+* 12b. Enter Shipping Information, and click Continue
+* 13. In Shipping Method, Click Continue
+* 14. In Payment Information select 'Check/Money Order' radio button. Click Continue
+* 15. Click 'PLACE ORDER' button 
+* 16. Verify Oder is generated. Note the order number
+ * 
+ * Test Data:
+ * 1)User credentials created in test case 05
+ * 2)Shipping information Country=United States,State=New York,Zip=542896,Address=ABC,City=New York,Telephone=12345678
+ * 
+ * 
+ * Expected outcomes:
+ * 1)Flat Rate Shipping of $5 is generate
+ * 2)Shipping cost is added to total product cost
+ * 3)Order is placed.order number is generated
+ *
+ */
+
 package Test;
-
-
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import Base.BaseTest;
@@ -22,30 +48,11 @@ import Pages.Index;
 import Pages.LoginOrRegisterPage;
 import Pages.MyWishlistPage;
 import Pages.ShoppingCart;
+import Util.Constants;
 
 public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends BaseTest{
+
 	
-	
-	
-	
-	@DataProvider(name="loginData")
-	public Object[][] getLoginData(){
-//		String fileLocation="";
-//		
-//		Object[][] arr=new Object[1][];
-//		
-//		File file=new File(fileLocation);//create a new file using the file location
-//		FileInputStream fis=new FileInputStream();
-		
-		
-		return new Object[][] {
-			{"United States","New York"
-				,"542896","ABC","New York","12345678"}
-		};
-//		{"shenlijuan004@gmail.com","Today@123","United States","New York"
-//			,"542896","ABC","New York","12345678"}
-//	};
-	}
 	
 	Index index;
 	LoginOrRegisterPage loginOrRegisterPage;
@@ -65,14 +72,24 @@ public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends Bas
 	
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
+	}
+	
+	
+	@DataProvider(name="loginData")
+	public Object[][] getLoginData(){
+
+		return new Object[][] {
+			//String password,country, state, zip,address,city,telephone,countryForEstimate,stateForEstimate,zipcodeForEstimate
+			{"Today@123","United States","New York","542896","ABC","New York","12345678","United States","New York","542896","Fixed - $5.00"}
+		};
+
 	}
 	
 	@Test(dataProvider="loginData")
-	
-	public void VerifyUserCanPurchaseProductUsingRegisteredEmailId(String emailAddress,
+	public void VerifyUserCanPurchaseProductUsingRegisteredEmailId(
 			String password,String country, String state, String zip,String   
-			address,String city,String  telephone,String countryForEstimate,String  stateForEstimate,String  zipcodeForEstimate) throws Exception {
+			address,String city,String  telephone,String countryForEstimate,String  stateForEstimate,String  zipcodeForEstimate,String sFlatRatePrice) throws Exception {
 		index=new Index();
 		
 		//verify heading of the page
@@ -85,7 +102,9 @@ public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends Bas
 		
 		//3.Login in application using previously created credential
 		loginOrRegisterPage=new LoginOrRegisterPage();
-		loginOrRegisterPage.loginForm(emailAddress, password);
+		loginOrRegisterPage.loginForm(Constants.emailAddress, password);
+		
+		//loginOrRegisterPage.loginForm("shenlijuan004@gmail.com", password);
 		
 		//4.click on 'MY WISHLIST' link
 		customerHomePage=new CustomerHomePage();
@@ -103,6 +122,7 @@ public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends Bas
 		//6.Enter general shipping country,state/province and zip for the shipping 
 		//cost estimate
 		shoppingCart=new ShoppingCart();
+		System.out.println("countryForEstimate is:"+countryForEstimate);
 		shoppingCart.enterInformationForExtimateShippingCost(countryForEstimate, stateForEstimate, zipcodeForEstimate);
 		
 		//7.Click Estimate
@@ -115,7 +135,7 @@ public class TC6_VerifyUserCanPurchaseProductUsingRegisteredEmailId  extends Bas
 		System.out.println("flatRate="+flatRate);
 		Assert.assertEquals(flatRate, sFlatRate);
 		
-		String sFlatRatePrice="Fixed - $10.00";
+		
 		String flatRatePrice=shoppingCart.getText("flat rate price");
 		System.out.println("sFlatRatePrice="+sFlatRatePrice);
 		System.out.println("flatRatePrice="+flatRatePrice);

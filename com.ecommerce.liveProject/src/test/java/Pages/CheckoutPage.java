@@ -48,7 +48,7 @@ public class CheckoutPage extends BaseTest{
 	@FindBy(xpath="//*[@id='payment-buttons-container']/button")
 	WebElement continueButtonPaymentMethod;
 	
-	@FindBy(xpath="//*[@title='Ship to this address'")
+	@FindBy(xpath="//*[@title='Ship to this address']")
 	WebElement shipToThisAddressRadio;
 	
 	@FindBy(xpath="//*[@title='Ship to different address']")

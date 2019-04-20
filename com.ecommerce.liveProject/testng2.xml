@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TC2Suite">
+  <test thread-count="5" name="TC2Test">
+    <classes>
+      <class name="Test.TC2_VerifyCostOfProductInListPageAndDetailsPageEqual"/>
+    </classes>
+  </test> <!-- TC1Test -->
+</suite> <!-- TC1Suite -->

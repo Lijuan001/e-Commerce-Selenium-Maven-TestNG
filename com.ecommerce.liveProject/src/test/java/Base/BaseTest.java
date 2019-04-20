@@ -25,7 +25,7 @@ public class BaseTest {
 	public BaseTest() {
 		
 		prop=new Properties();//create an empty property list without defautl vlaue
-		System.out.println("prop is :"+prop);
+		//System.out.println("prop is :"+prop);
 		try {
 			FileInputStream fil=new FileInputStream(System.getProperty("user.dir")+
 					"\\src\\test\\java\\config\\config.properties");
@@ -77,54 +77,6 @@ public class BaseTest {
 		driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 	}
 	
-	public String getCurrentDateAndTime() {
-		LocalDateTime myObj=LocalDateTime.now();
-		DateTimeFormatter myFormatObj=DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-		
-		String formattedDate=myObj.format(myFormatObj);
-		return formattedDate;
-		
-	}
-	
-	//get screenshot
-	
-	public void getScreenShot() {
-		File srcFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String currentTime=getCurrentDateAndTime();
-		System.out.println("current time is: "+currentTime);
-		String png=System.getProperty("user.dir")+"\\Screenshot\\"+"screenshot"+currentTime+".png";
-		System.out.println("png is: "+png);
-		try {
-			FileUtils.copyFile(srcFile, new File(png));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
-	//generate a random emailAddress
-	
-	public String generateEmailAddress() {
-		String string="abcdefghijklmnopqrstuvwxyz1234567890";
-		StringBuilder chars=new StringBuilder();
-		
-		Random rnd=new Random();
-		
-		while(chars.length()<10) {
-			int index=(int) (rnd.nextFloat() * string.length());
-			System.out.println("next float is :"+rnd.nextFloat());
-						
-			chars.append(string.charAt(index));
-			System.out.println("char is :"+string.charAt(index));
-
-		}
-		
-		chars.append("@email.com");
-		String email=chars.toString();
-		System.out.println("email is:"+email);
-		return email;
-	}
 	
 }
 	

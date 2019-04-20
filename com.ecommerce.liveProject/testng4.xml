@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TC4Suite">
+  <test thread-count="5" name="TC4Test">
+  <parameter name="mobile1" value="Sony Xperia"/>
+  <parameter name="mobile2" value="iphone"/>
+    <classes>
+      <class name="Test.TC4_VerifyAbleToCompareTwoProduct"/>
+    </classes>
+  </test> <!-- TC1Test -->
+</suite> <!-- TC1Suite -->

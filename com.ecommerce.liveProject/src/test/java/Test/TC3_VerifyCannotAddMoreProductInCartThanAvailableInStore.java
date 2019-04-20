@@ -1,3 +1,23 @@
+/***
+ * Verify that you can't add more product in cart than the product available in store
+ * 
+ * Test Steps:
+ * 1. Goto http://live.guru99.com/
+ * 2.Click on 'MOBILE' menu
+ * 3.In the list of all mobile, click on 'ADD TO CART' for Sony Xperia mobile
+ * 4.Change 'QTY' value to 1000 and click 'UPDATE' button.
+ * 5.Verify the error message.
+ * 6.Then click on 'EMPTY CART' link in the footer of list of all mobiles.
+ * 7.Verify cart is empty.
+ * 
+ * 
+ * Expected outcomes:
+ * 1. On clicking update button an error is shown 'The maximum quantity allowed for purchase is 500'
+ * 2.On clicking empty cart button-a message 'SHOPPING CART IS EMPTY' is shown
+ */
+
+
+
 package Test;
 
 import org.testng.Assert;
@@ -18,7 +38,7 @@ public class TC3_VerifyCannotAddMoreProductInCartThanAvailableInStore extends Ba
 	public void setUp() {
 		initBrowser();
 		driver.get(prop.getProperty("baseURL"));
-		System.out.println("set up prop is: "+prop);
+		//System.out.println("set up prop is: "+prop);
 	}
 	
 	@AfterMethod
@@ -32,9 +52,9 @@ public class TC3_VerifyCannotAddMoreProductInCartThanAvailableInStore extends Ba
 	ShoppingCart shoppingCart;
 	
 	@Test
-	public void VerifyCostOfProductInListPageAndDetailsPageEqual() {
+	public void VerifyCostOfProductInListPageAndDetailsPageEqual() throws InterruptedException {
 		
-index=new Index();
+		index=new Index();
 		
 		//verify heading of the page
 		String expectedHeading="THIS IS DEMO SITE";
@@ -52,12 +72,18 @@ index=new Index();
 		System.out.println("mobile page heading is: "+actual);
 		Assert.assertEquals(actual, expectedMobilePageTitle);
 		
+		Thread.sleep(1000);
+		
 		//3.In the list of all mobile,click on "ADD TO CART" for Sony Xperia mobile
 		mobilepage.addToCartSonyXperia();
+		
+		Thread.sleep(1000);
 		
 		//4.Change 'QTY' value to 1000 and click 'UPDATE' button
 		shoppingCart=new ShoppingCart();
 		shoppingCart.changeQTYAndUpdate(1000);
+		
+		Thread.sleep(1000);
 		
 		//5.Verify the error message
 		Assert.assertTrue(shoppingCart.getErrorMessageQTY().contains("The maximum quantity allowed for purchase is 500"));
@@ -70,6 +96,7 @@ index=new Index();
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Thread.sleep(2000);
 		
 		//7.Verify cart is empty
 		Assert.assertEquals(shoppingCart.getCartIsEmptyMessage(), "SHOPPING CART IS EMPTY");

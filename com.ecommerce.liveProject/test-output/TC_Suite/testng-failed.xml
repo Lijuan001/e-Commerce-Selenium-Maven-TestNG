@@ -12,13 +12,13 @@
     <parameter name="telephone" value="123456"/>
     <parameter name="state" value="New York"/>
     <classes>
-      <class name="Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct">
+      <class name="Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail">
         <methods>
-          <include name="setup"/>
-          <include name="teardown"/>
-          <include name="verifyBeAbleToChangeOrReorderPreviouslyAddedProduct" invocation-numbers="0"/>
+          <include name="setUp"/>
+          <include name="VerifyCostOfProductInListPageAndDetailsPageEqual"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- Test.TC8_VerifyBeAbleToChangeOrReorderPreviouslyAddedProduct -->
+      </class> <!-- Test.TC5_VerifyCanCreateAccountAndShareWishlistToOtherPeopleUsingEmail -->
     </classes>
   </test> <!-- TC_Test(failed) -->
 </suite> <!-- Failed suite [TC_Suite] -->

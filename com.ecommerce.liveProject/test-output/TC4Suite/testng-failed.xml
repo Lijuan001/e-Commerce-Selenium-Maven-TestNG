@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TC4Suite]">
+  <test thread-count="5" name="TC4Test(failed)">
+    <parameter name="mobile2" value="iphone"/>
+    <parameter name="mobile1" value="Sony Xperia"/>
+    <classes>
+      <class name="Test.TC4_VerifyAbleToCompareTwoProduct">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="VerifyCostOfProductInListPageAndDetailsPageEqual" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Test.TC4_VerifyAbleToCompareTwoProduct -->
+    </classes>
+  </test> <!-- TC4Test(failed) -->
+</suite> <!-- Failed suite [TC4Suite] -->

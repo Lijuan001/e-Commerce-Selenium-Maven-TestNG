@@ -1,3 +1,24 @@
+
+/***
+ * Verify that cost of product in list page and details page are equal
+ * 
+ * Test Steps:
+ * 1. Goto http://live.guru99.com/
+ * 2.Click on 'MOBILE' menu
+ * 3.In the list of all mobile, read the cost of Sony Xperia mobile.Note this value
+ * 4.Click on Sony Xperia mobile
+ * 5.Read the cost of Sony Xperia mobile from detail page.
+ * 6.Compare value in step 3 & step5
+ * 
+ * 
+ * Expected outcomes:
+ * 1. Product Value is list and details page should be equal($100)
+ */
+
+
+
+
+
 package Test;
 
 import org.testng.Assert;
@@ -18,7 +39,7 @@ public class TC2_VerifyCostOfProductInListPageAndDetailsPageEqual extends BaseTe
 	public void setUp() {
 		initBrowser();
 		driver.get(prop.getProperty("baseURL"));
-		System.out.println("set up prop is: "+prop);
+		//System.out.println("set up prop is: "+prop);
 	}
 	
 	@AfterMethod
@@ -33,7 +54,7 @@ public class TC2_VerifyCostOfProductInListPageAndDetailsPageEqual extends BaseTe
 	@Test
 	public void VerifyCostOfProductInListPageAndDetailsPageEqual() {
 		
-index=new Index();
+		index=new Index();
 		
 		//verify heading of the page
 		String expectedHeading="THIS IS DEMO SITE";
@@ -42,6 +63,13 @@ index=new Index();
 		
 		//2.Click On 'MOBILE' menu
 		index.goToMobilePage();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		mobilepage=new MobilePage();
 		//verify Title of the page
@@ -57,6 +85,13 @@ index=new Index();
 		
 		//4.Click on Sony Xperia mobile
 		mobilepage.goToSonyXperiaDetailPage();
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//5.Read the Sony Xperia mobile from detail page
 		sonyXperiaDetail=new SonyXperiaDetailPage();
